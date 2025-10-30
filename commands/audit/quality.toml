@@ -1,0 +1,52 @@
+description = "Audit code quality and maintainability metrics"
+
+prompt = """
+**File**: {{args}}
+!{cat {{args}}}
+
+Code Quality Audit:
+
+## Complexity Analysis
+- Cyclomatic complexity per function (target: <20)
+- Function length (target: <70 lines)
+- Nesting depth (target: <5 levels)
+- Cognitive complexity
+
+## Code Smells
+- Duplicated code blocks
+- Long parameter lists (>4 params)
+- Large classes/components (>300 lines)
+- God objects/components doing too much
+- Dead code or unused variables
+- Magic numbers without constants
+
+## DRY Violations
+- Repeated logic
+- Similar code patterns
+- Copy-paste candidates
+
+## Naming Quality
+- Unclear variable names (x, temp, data)
+- Inconsistent naming conventions
+- Non-descriptive function names
+- Abbreviations without context
+
+## Single Responsibility
+- Functions doing multiple things
+- Mixed concerns in components
+
+**Output**:
+| Line | Issue | Severity | Refactor To |
+|------|-------|----------|-------------|
+
+### Metrics
+- Maintainability Index: X/100
+- Cyclomatic Complexity: X (avg per function)
+- Lines of Code: X
+- Functions: X (avg X lines each)
+
+### Top 3 Refactoring Priorities
+1. [Line X] Issue - Impact: High/Medium/Low
+
+NO verbose explanations.
+"""

@@ -4,8 +4,9 @@ This repository contains a collection of custom slash commands for the Gemini CL
 
 ## Features
 
-- **Git Commit Message Generation**: The `/commit` command generates a Git commit message based on your staged changes, following conventional commit standards.
-- **TypeScript Type Generation**: The `/types` command generates and adds TypeScript types to your files with intelligent placement and deduplication.
+-   **Git Commit Message Generation**: The `/commit` command generates a Git commit message based on your staged changes, following conventional commit standards.
+-   **TypeScript Type Generation**: The `/types` command generates and adds TypeScript types to your files with intelligent placement and deduplication.
+-   **Code Quality Audit**: The `/audit:quality` command analyzes a file for code quality and maintainability metrics.
 
 ## Installation
 
@@ -44,6 +45,22 @@ For example:
 ```
 
 This will analyze `src/components/Button.tsx`, generate a `ButtonProps` type, and add it to the file.
+
+### `/audit:quality`
+
+To audit a file for code quality, use the `/audit:quality` command followed by the file path.
+
+```
+/audit:quality <file-path>
+```
+
+For example:
+
+```
+/audit:quality src/components/Button.tsx
+```
+
+This will analyze `src/components/Button.tsx` and report on complexity, code smells, DRY violations, and other metrics.
 
 ## Contributing
 
