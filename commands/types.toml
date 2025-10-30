@@ -1,0 +1,41 @@
+description = "Generate and add types to file with intelligent placement and deduplication"
+
+prompt = """
+**Target File**: {{args[0]}}
+
+**Existing Content**: !{cat {{args}}}
+
+**Generate Type For**: {{args[1:]}}
+
+**Multi-Step Process**:
+
+**Step 1 - Analysis**:
+- Parse existing types in the file
+- Check if similar types already exist
+- Identify reusable base types or utility types
+- Determine optimal insertion point (near related types or before exports)
+
+**Step 2 - Generation**:
+Create new type/interface that:
+- Extends or composes existing types if applicable
+- Follows file's naming patterns (PascalCase, prefixes, etc.)
+- Includes comprehensive JSDoc documentation
+- Uses generics if pattern is reusable
+- Adds proper line breaks for readability
+
+**Step 3 - File Modification**:
+**MUST USE Edit TOOL** to modify {{args[0]}}:
+- Insert the new type at the determined location
+- Maintain consistent formatting
+- Preserve all existing code
+- Add appropriate spacing
+
+**Step 4 - Verification**:
+- Confirm no duplicate types created
+- Ensure valid TypeScript syntax
+- Report line numbers where type was inserted
+
+**CRITICAL REQUIREMENT**: You MUST modify the actual file using the Edit or WriteFile tool. Do not just display the code - actually insert it into {{args[0]}}.
+"""
+
+

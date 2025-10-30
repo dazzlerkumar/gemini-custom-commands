@@ -1,0 +1,29 @@
+description = "Generates a Git commit message based on staged changes."
+prompt = """
+Please generate a commit message based on the following git diff:
+!{git diff --staged}
+
+Follow these strict formatting guidelines:
+- Format: type(scope): description
+- Use parentheses around the scope (file name or feature name or fix name or enhancement name)
+- Add a space  after the colon
+- Reject if there are any console.logs, ignore if console log has "DEBUG" keyword
+- Reject if it has any unused code
+- Example: feat(auth): add user login functionality
+- Example: fix(database.js): resolve connection timeout issue
+- Example: chore(config): update environment variables
+
+Common types to use:
+- feat: new feature or functionality
+- fix: bug fix
+- chore: maintenance tasks, config changes
+- docs: documentation changes
+- style: code formatting, whitespace
+- refactor: code restructuring without behavior change
+- test: adding or updating tests
+- perf: performance improvements
+
+Keep the description concise and use imperative mood (e.g., "add" not "added").
+Only provide the commit message, nothing else.
+"""
+
